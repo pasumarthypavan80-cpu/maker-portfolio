@@ -29,6 +29,28 @@ const projects = [
     href: "http://localhost:8765/",
     className: "jarvis",
   },
+  {
+    index: "04",
+    name: "Mochan Mini Bot",
+    type: "Animated companion robot",
+    description:
+      "A 3D-printed ESP32-C3 robot with expressive OLED eyes, dual gear motors, and a compact rechargeable power system. Twelve watertight parts turn code into a character you can hold.",
+    tags: ["ESP32-C3", "Arduino", "12 STL parts"],
+    href: "https://chatgpt.com/c/6a76b13e-1638-83e8-820c-572e841b7195",
+    linkLabel: "Open build process",
+    className: "mochan",
+  },
+  {
+    index: "05",
+    name: "JARVIS Necklace",
+    type: "Wearable AI interface",
+    description:
+      "A press-to-talk wearable that connects over Bluetooth to a phone bridge and the local JARVIS brain. Light, vibration, and voice make personal AI available without opening a screen.",
+    tags: ["ESP32-S3", "Bluetooth LE", "Haptics"],
+    href: "https://chatgpt.com/c/6a72e41c-7b4c-83e8-acbb-8b2c05948541",
+    linkLabel: "Open blueprint chat",
+    className: "necklace",
+  },
 ];
 
 function ProductPreview({ project }: { project: (typeof projects)[number] }) {
@@ -60,6 +82,34 @@ function ProductPreview({ project }: { project: (typeof projects)[number] }) {
       </div>
     );
   }
+  if (project.className === "mochan") {
+    return (
+      <div className="preview mochan-preview" aria-hidden="true">
+        <div className="window-bar"><i /><i /><i /><span>MOCHAN // HELLO</span></div>
+        <div className="mochan-inner">
+          <span className="bot-signal">READY TO HELP</span>
+          <div className="bot-antenna"><i /></div>
+          <div className="bot-head"><i /><i /><span /></div>
+          <div className="bot-body"><b>M</b><small>MINI 01</small></div>
+          <div className="bot-shadow" />
+        </div>
+      </div>
+    );
+  }
+  if (project.className === "necklace") {
+    return (
+      <div className="preview necklace-preview" aria-hidden="true">
+        <div className="window-bar"><i /><i /><i /><span>JARVIS // WEARABLE</span></div>
+        <div className="necklace-inner">
+          <span className="wearable-note note-one">VOICE<br />ONLINE</span>
+          <span className="wearable-note note-two">12 HR<br />BATTERY</span>
+          <div className="chain" />
+          <div className="pendant"><i /><b>J</b><small>LISTENING</small></div>
+          <p>Intelligence,<br />within reach.</p>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="preview jarvis-preview" aria-hidden="true">
       <div className="window-bar"><i /><i /><i /><span>JARVIS // LIVE</span></div>
@@ -86,7 +136,7 @@ export default function Home() {
         <h1>I make useful<br />things for <span>real life.</span></h1>
         <p className="hero-copy">Independent product maker exploring the space between ambitious software and everyday problems.</p>
         <a className="scroll-link" href="#work">Scroll to see the work <span>↓</span></a>
-        <div className="hero-stamp" aria-hidden="true"><span>03</span><small>PRODUCTS<br />SHIPPED</small></div>
+        <div className="hero-stamp" aria-hidden="true"><span>05</span><small>PRODUCTS<br />SHIPPED</small></div>
       </section>
 
       <section className="work" id="work">
@@ -99,9 +149,9 @@ export default function Home() {
               <h2>{project.name}</h2>
               <p className="description">{project.description}</p>
               <div className="tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-              <a className="project-link" href={project.href} target="_blank" rel="noreferrer">Open the build <span>↗</span></a>
+              {project.href ? <a className="project-link" href={project.href} target="_blank" rel="noreferrer">{"linkLabel" in project ? project.linkLabel : "Open the build"} <span>↗</span></a> : <span className="project-link project-status">In development <span>●</span></span>}
             </div>
-            <a className="preview-link" href={project.href} target="_blank" rel="noreferrer" aria-label={`Open ${project.name}`}><ProductPreview project={project} /></a>
+            {project.href ? <a className="preview-link" href={project.href} target="_blank" rel="noreferrer" aria-label={`Open ${project.name}`}><ProductPreview project={project} /></a> : <div className="preview-link"><ProductPreview project={project} /></div>}
           </article>
         ))}
       </section>
