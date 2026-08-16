@@ -1,0 +1,121 @@
+const projects = [
+  {
+    index: "01",
+    name: "Nern",
+    type: "Private CRM",
+    description:
+      "A private, local-first relationship workspace that turns scattered contacts and account activity into a clear revenue picture.",
+    tags: ["CRM", "Revenue", "Local-first"],
+    href: "https://nudge-crm-d4667.web.app/app.html?release=50#revenue",
+    className: "nern",
+  },
+  {
+    index: "02",
+    name: "Glēw",
+    type: "Student workspace",
+    description:
+      "A focused command center for students to manage goals, applications, projects, and saved opportunities in one private place.",
+    tags: ["Education", "Goals", "Opportunities"],
+    href: "https://glew-app.web.app/app",
+    className: "glew",
+  },
+  {
+    index: "03",
+    name: "JARVIS",
+    type: "Personal AI system",
+    description:
+      "A voice-first personal interface for asking, creating, planning, seeing, and remembering — built as an explorable knowledge graph.",
+    tags: ["AI", "Voice", "Knowledge graph"],
+    href: "http://localhost:8765/",
+    className: "jarvis",
+  },
+];
+
+function ProductPreview({ project }: { project: (typeof projects)[number] }) {
+  if (project.className === "nern") {
+    return (
+      <div className="preview nern-preview" aria-hidden="true">
+        <div className="window-bar"><i /><i /><i /><span>Revenue overview</span></div>
+        <div className="nern-grid">
+          <div className="mini-nav"><b>N</b><i /><i /><i /><i /></div>
+          <div className="mini-main">
+            <span className="eyebrow">PIPELINE</span><strong>$284,500</strong>
+            <div className="bars"><i /><i /><i /><i /><i /><i /></div>
+            <div className="stat-row"><span>Active accounts</span><b>24</b><span>Win rate</span><b>38%</b></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  if (project.className === "glew") {
+    return (
+      <div className="preview glew-preview" aria-hidden="true">
+        <div className="window-bar"><i /><i /><i /><span>Student workspace</span></div>
+        <div className="glew-inner">
+          <div className="glew-logo">G</div><span className="eyebrow">THIS WEEK</span>
+          <strong>Keep your momentum.</strong>
+          <div className="goal"><i /><span><b>Portfolio refresh</b><small>3 of 5 steps</small></span><em>60%</em></div>
+          <div className="goal"><i /><span><b>Summer applications</b><small>8 opportunities saved</small></span><em>08</em></div>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div className="preview jarvis-preview" aria-hidden="true">
+      <div className="window-bar"><i /><i /><i /><span>JARVIS // LIVE</span></div>
+      <div className="jarvis-inner">
+        <span className="node node-a">VISION</span><span className="node node-b">MEMORY</span>
+        <span className="node node-c">PLAN</span><span className="node node-d">MEDIA</span>
+        <div className="orb"><b>JARVIS</b><small>TAP TO TALK</small></div>
+        <div className="command">Ask, create, play, plan, or show me… <b>↵</b></div>
+      </div>
+    </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <main>
+      <nav>
+        <a className="brand" href="#top" aria-label="Back to top"><span>DP</span> DEEPESH / MAKER</a>
+        <div className="nav-links"><a href="#work">Work</a><a href="#about">About</a><a className="nav-cta" href="mailto:hello@example.com">Let&apos;s talk ↗</a></div>
+      </nav>
+
+      <section className="hero" id="top">
+        <div className="hero-kicker"><span className="status-dot" /> Available for ambitious builds <em>SF / 11:42 PM</em></div>
+        <h1>I make useful<br />things for <span>real life.</span></h1>
+        <p className="hero-copy">Independent product maker exploring the space between ambitious software and everyday problems.</p>
+        <a className="scroll-link" href="#work">Scroll to see the work <span>↓</span></a>
+        <div className="hero-stamp" aria-hidden="true"><span>03</span><small>PRODUCTS<br />SHIPPED</small></div>
+      </section>
+
+      <section className="work" id="work">
+        <div className="section-head"><span>SELECTED BUILDS</span><span>2025—2026</span></div>
+        {projects.map((project) => (
+          <article className="project" key={project.name}>
+            <div className="project-copy">
+              <div className="project-number">/{project.index}</div>
+              <p className="project-type">{project.type}</p>
+              <h2>{project.name}</h2>
+              <p className="description">{project.description}</p>
+              <div className="tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+              <a className="project-link" href={project.href} target="_blank" rel="noreferrer">Open the build <span>↗</span></a>
+            </div>
+            <a className="preview-link" href={project.href} target="_blank" rel="noreferrer" aria-label={`Open ${project.name}`}><ProductPreview project={project} /></a>
+          </article>
+        ))}
+      </section>
+
+      <section className="about" id="about">
+        <p className="section-label">/ ABOUT THE MAKER</p>
+        <div>
+          <h2>I build at the intersection of <span>systems, instinct, and a little obsession.</span></h2>
+          <p>I care about software that earns its place in someone&apos;s day: calm enough to understand, capable enough to keep, and opinionated enough to feel like something.</p>
+          <a href="mailto:hello@example.com">Start a conversation ↗</a>
+        </div>
+      </section>
+
+      <footer><a className="brand" href="#top"><span>DP</span> DEEPESH / MAKER</a><p>Made with intent. Shipped on GitHub.</p><a href="#top">Back to top ↑</a></footer>
+    </main>
+  );
+}
