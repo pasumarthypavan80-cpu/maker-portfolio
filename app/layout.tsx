@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Deepesh — Maker",
-  description: "Independent product maker. Selected builds include Nern, Glēw, JARVIS, Mochan Mini Bot, and JARVIS Necklace.",
+  description: "Independent product maker. Selected builds include Nern, Glēw, JARVIS, Mochan Mini Bot, JARVIS Necklace, and Kemet.",
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
 };
 

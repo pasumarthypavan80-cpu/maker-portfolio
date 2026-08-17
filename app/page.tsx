@@ -51,6 +51,17 @@ const projects = [
     linkLabel: "Open blueprint chat",
     className: "necklace",
   },
+  {
+    index: "06",
+    name: "Kemet",
+    type: "Interactive 3D encyclopedia",
+    description:
+      "A guided world atlas that turns history, geography, and culture into explorable expeditions—complete with narrated environments, field notes, hotspots, and 60 destinations across six regions.",
+    tags: ["3D Worlds", "Education", "60 Destinations"],
+    href: "https://worlds-to-explore-2026.pavanpasumarthy.chatgpt.site/",
+    linkLabel: "Begin exploring",
+    className: "kemet",
+  },
 ];
 
 function ProductPreview({ project }: { project: (typeof projects)[number] }) {
@@ -110,6 +121,24 @@ function ProductPreview({ project }: { project: (typeof projects)[number] }) {
       </div>
     );
   }
+  if (project.className === "kemet") {
+    return (
+      <div className="preview kemet-preview" aria-hidden="true">
+        <div className="window-bar"><i /><i /><i /><span>KEMET // EXPEDITION 01</span></div>
+        <div className="kemet-inner">
+          <div className="sun-disc" />
+          <div className="pyramid pyramid-back" /><div className="pyramid pyramid-front" />
+          <div className="obelisk"><i /></div>
+          <div className="kemet-horizon" />
+          <span className="kemet-label">THE COLLECTION / VOL. 1</span>
+          <h3>Ancient<br /><em>Egypt</em></h3>
+          <p>THE NILE VALLEY · 01</p>
+          <div className="hotspot hot-one">+</div><div className="hotspot hot-two">+</div>
+          <div className="atlas-count"><b>60</b><small>PLACES<br />IN THE ARCHIVE</small></div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="preview jarvis-preview" aria-hidden="true">
       <div className="window-bar"><i /><i /><i /><span>JARVIS // LIVE</span></div>
@@ -136,7 +165,7 @@ export default function Home() {
         <h1>I make useful<br />things for <span>real life.</span></h1>
         <p className="hero-copy">Independent product maker exploring the space between ambitious software and everyday problems.</p>
         <a className="scroll-link" href="#work">Scroll to see the work <span>↓</span></a>
-        <div className="hero-stamp" aria-hidden="true"><span>05</span><small>PRODUCTS<br />SHIPPED</small></div>
+        <div className="hero-stamp" aria-hidden="true"><span>06</span><small>PRODUCTS<br />SHIPPED</small></div>
       </section>
 
       <section className="work" id="work">
